@@ -21,8 +21,8 @@ module.exports = (client) => {
       try {
         await rest.put(
           Routes.applicationCommands(
-            process.env.CLIENT_ID
-            // process.env.GUILD_ID // to specify it to only one server
+            process.env.CLIENT_ID,
+            process.env.GUILD_ID // to specify it to only one server
           ),
           { body: commandsArr }
         );

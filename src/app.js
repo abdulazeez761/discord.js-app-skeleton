@@ -1,5 +1,6 @@
 require("dotenv").config();
-const { TOKEN } = process.env;
+const { TOKEN, MONGO_TOKEN } = process.env;
+const { connect } = require("mongoose");
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const fs = require("fs");
 const client = new Client({
@@ -26,3 +27,6 @@ for (const folder of coreFolder) {
 client.eventsHandler();
 client.commandsHandler();
 client.login(TOKEN);
+(async () => {
+  await connect(MONGO_TOKEN).catch(console.error);
+})();
